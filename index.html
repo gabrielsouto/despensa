@@ -24,10 +24,17 @@
       }
 
       header {
-        padding: 1.5rem 1rem;
+        padding: 0.5rem 1rem;
         background: #222;
         color: #fff;
         text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
       }
 
       main {
@@ -58,11 +65,99 @@
         align-items: stretch;
       }
 
-      video {
-        width: 100%;
+      .video-wrap {
+        position: relative;
         border-radius: 12px;
+        overflow: hidden;
         background: #000;
         min-height: 220px;
+      }
+
+      video {
+        width: 100%;
+        display: block;
+        border-radius: 12px;
+      }
+
+      .scan-guia {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .scan-guia-rect {
+        width: 70%;
+        max-width: 280px;
+        aspect-ratio: 2 / 1;
+        border: 2px solid rgba(255, 255, 255, 0.75);
+        border-radius: 8px;
+        box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35);
+      }
+
+      .btn-lanterna {
+        background: #444;
+      }
+
+      .btn-lanterna:hover {
+        background: #222;
+      }
+
+      .btn-lanterna-ativo {
+        background: #f5a623;
+      }
+
+      .btn-lanterna-ativo:hover {
+        background: #d4891a;
+      }
+
+      .btn-upload-foto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        cursor: pointer;
+        background: #444;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.7rem 0.85rem;
+        font: inherit;
+        font-weight: 600;
+        width: 100%;
+        transition: background 0.2s ease;
+      }
+
+      .btn-upload-foto:hover {
+        background: #222;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .zoom-wrap {
+        padding: 0.25rem 0;
+      }
+
+      .zoom-label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #555;
+      }
+
+      .zoom-slider {
+        width: 100%;
+        accent-color: #0a7cff;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
       }
 
       .controls {
@@ -96,6 +191,11 @@
         background: #0058c7;
       }
 
+      button:disabled {
+        background: #90b8f0;
+        cursor: not-allowed;
+      }
+
       form {
         display: grid;
         gap: 1rem;
@@ -114,7 +214,157 @@
         color: #555;
       }
 
-      .highlight {
+      .produto-lista {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .produto-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+        border: 1px solid #e8ecef;
+        border-radius: 10px;
+        background: #fafafa;
+      }
+
+      .produto-card img {
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+        background: #e0e0e0;
+      }
+
+      .produto-card-sem-foto {
+        width: 52px;
+        height: 52px;
+        border-radius: 8px;
+        background: #e0e0e0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+      }
+
+      .produto-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .produto-nome {
+        font-weight: 600;
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .produto-detalhe {
+        font-size: 0.82rem;
+        color: #777;
+        margin-top: 0.15rem;
+      }
+
+      .produto-acoes {
+        display: flex;
+        gap: 0.4rem;
+        flex-shrink: 0;
+      }
+
+      .produto-acoes button {
+        width: auto;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.82rem;
+      }
+
+      .btn-perigo {
+        background: #e53935;
+      }
+
+      .btn-perigo:hover {
+        background: #b71c1c;
+      }
+
+      .btn-secundario {
+        background: #fff;
+        color: #1b1b1b;
+        border: 1px solid #cfd8dc;
+      }
+
+      .btn-secundario:hover {
+        background: #f0f0f0;
+      }
+
+      .lista-vazia {
+        text-align: center;
+        color: #aaa;
+        font-size: 0.9rem;
+        padding: 1rem 0;
+      }
+
+      .busca-wrap {
+        margin-bottom: 1rem;
+      }
+
+      .qty-controles {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .qty-controles button {
+        width: 32px;
+        padding: 0.3rem;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .qty-valor {
+        min-width: 24px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 1rem;
+      }
+
+      .modal {
+        background: #fff;
+        border-radius: 14px;
+        padding: 1.5rem;
+        width: min(480px, 100%);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      }
+
+      .modal h3 {
+        margin-top: 0;
+        font-size: 1.1rem;
+      }
+
+      .modal-acoes {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .modal-acoes button {
+        flex: 1;
+      }
+
+      .highlight-anim {
         animation: pulse 0.6s ease;
       }
 
@@ -129,175 +379,155 @@
         }
       }
 
-      .hidden {
-        display: none !important;
-      }
-
       @media (max-width: 600px) {
         main {
           padding: 1rem;
         }
       }
     </style>
-    <script defer src="https://unpkg.com/@zxing/library@0.20.0"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@undecaf/zbar-wasm@0.10.1/dist/index.js"></script>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="db.js?v=3"></script>
+    <script defer src="app.js?v=8"></script>
   </head>
   <body>
-    <header>
-      <h1>Despensa</h1>
-      <p>Escaneie o código de barras e preencha as informações do produto</p>
-    </header>
+    <div id="app">
+      <header>
+        <h1>Despensa</h1>
+      </header>
 
-    <main>
-      <section id="scanner">
-        <h2>Leitor de código de barras</h2>
-        <div id="scanner-container">
-          <video id="video" playsinline></video>
-          <div class="controls">
-            <select id="camera-select" aria-label="Escolher câmera"></select>
-            <button id="toggle-scan">Iniciar leitura</button>
+      <main>
+        <section id="scanner">
+          <h2>Leitor de código de barras</h2>
+          <div id="scanner-container">
+            <div class="video-wrap">
+              <video id="video" playsinline></video>
+              <div v-if="scanning" class="scan-guia">
+                <div class="scan-guia-rect"></div>
+              </div>
+            </div>
+            <div class="controls">
+              <select id="camera-select" aria-label="Escolher câmera" @change="onCameraChange">
+                <option v-if="cameras.length === 0" disabled>Nenhuma câmera encontrada</option>
+                <option v-for="cam in cameras" :key="cam.deviceId" :value="cam.deviceId">
+                  {{ cam.label }}
+                </option>
+              </select>
+              <button @click="toggleScan">
+                {{ scanning ? 'Parar leitura' : 'Iniciar leitura' }}
+              </button>
+              <label class="btn-upload-foto">
+                📷 Enviar foto
+                <input type="file" accept="image/*" class="hidden" @change="lerCodigoDeImagem" />
+              </label>
+              <button
+                v-if="torchDisponivel"
+                :class="torchAtivo ? 'btn-lanterna-ativo' : 'btn-lanterna'"
+                @click="toggleTorch"
+              >
+                {{ torchAtivo ? '🔦 Lanterna ligada' : '🔦 Ligar lanterna' }}
+              </button>
+            </div>
+            <div v-if="zoomDisponivel" class="zoom-wrap">
+              <label class="zoom-label">
+                🔍 Zoom: {{ zoomAtual.toFixed(1) }}×
+                <input
+                  type="range"
+                  :min="zoomMin"
+                  :max="zoomMax"
+                  :step="zoomStep"
+                  :value="zoomAtual"
+                  @input="aplicarZoom"
+                  class="zoom-slider"
+                />
+              </label>
+            </div>
+            <div class="status">{{ scanStatus }}</div>
           </div>
-          <div class="status" id="status">Câmera parada</div>
+        </section>
+
+        <section id="lista-section">
+          <h2>Minha despensa</h2>
+          <div class="busca-wrap">
+            <input v-model="busca" type="search" placeholder="Buscar produto..." />
+          </div>
+          <div v-if="produtosFiltrados.length === 0" class="lista-vazia">
+            {{ busca ? 'Nenhum produto encontrado.' : 'Nenhum produto cadastrado ainda.' }}
+          </div>
+          <div v-else class="produto-lista">
+            <div v-for="p in produtosFiltrados" :key="p.id" class="produto-card">
+              <img v-if="p.photo" :src="p.photo" :alt="p.name" />
+              <div v-else class="produto-card-sem-foto">&#128230;</div>
+              <div class="produto-info">
+                <div class="produto-nome">{{ p.name }}</div>
+                <div class="produto-detalhe">
+                  <span v-if="p.barcode">{{ p.barcode }}</span>
+                  <span v-if="p.weight"> · {{ p.weight }}</span>
+                  <span v-if="p.package"> · {{ p.package }}</span>
+                </div>
+              </div>
+              <div class="produto-acoes">
+                <div class="qty-controles">
+                  <button @click="ajustarQuantidade(p, -1)">-</button>
+                  <span class="qty-valor">{{ p.quantity }}</span>
+                  <button @click="ajustarQuantidade(p, 1)">+</button>
+                </div>
+                <button class="btn-secundario" @click="abrirEdicao(p)">Editar</button>
+                <button class="btn-perigo" @click="removerProduto(p.id)">Remover</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div v-if="edicao" class="modal-overlay" @click.self="fecharEdicao">
+          <div class="modal">
+            <h3>Editar produto</h3>
+            <form @submit.prevent="salvarEdicao">
+              <label>Nome<input v-model="edicao.name" type="text" required /></label>
+              <label>Peso / quantidade<input v-model="edicao.weight" type="text" /></label>
+              <label>Embalagem<input v-model="edicao.package" type="text" /></label>
+              <div class="modal-acoes">
+                <button type="button" class="btn-secundario" @click="fecharEdicao">Cancelar</button>
+                <button type="submit">Salvar</button>
+              </div>
+            </form>
+          </div>
         </div>
-      </section>
 
-      <section id="form-section">
-        <h2>Cadastro de produto</h2>
-        <form id="product-form">
-          <label>
-            Código de barras
-            <input id="barcode" name="barcode" type="text" readonly placeholder="Escaneie um produto" />
-          </label>
-          <label>
-            Nome do produto
-            <input id="name" name="name" type="text" autocomplete="off" required />
-          </label>
-          <label>
-            Peso / quantidade
-            <input id="weight" name="weight" type="text" placeholder="Ex: 500 g, 2 L" />
-          </label>
-          <label>
-            Embalagem
-            <input id="package" name="package" type="text" placeholder="Ex: garrafa PET, pacote" />
-          </label>
-          <label>
-            Foto
-            <input id="photo" name="photo" type="file" accept="image/*" capture="environment" />
-          </label>
-          <button type="submit">Salvar (offline)</button>
-        </form>
-      </section>
-    </main>
-
-    <script>
-      const videoElement = document.getElementById("video");
-      const cameraSelect = document.getElementById("camera-select");
-      const toggleBtn = document.getElementById("toggle-scan");
-      const statusEl = document.getElementById("status");
-      const barcodeInput = document.getElementById("barcode");
-      const form = document.getElementById("product-form");
-
-      let codeReader;
-      let scanning = false;
-      let currentDeviceId = null;
-
-      async function initDevices() {
-        if (!navigator.mediaDevices?.enumerateDevices) {
-          statusEl.textContent = "API de câmera não suportada neste navegador.";
-          toggleBtn.disabled = true;
-          return;
-        }
-
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const videoDevices = devices.filter((device) => device.kind === "videoinput");
-        cameraSelect.innerHTML = "";
-
-        videoDevices.forEach((device, idx) => {
-          const option = document.createElement("option");
-          option.value = device.deviceId;
-          option.textContent = device.label || `Câmera ${idx + 1}`;
-          cameraSelect.appendChild(option);
-        });
-
-        if (videoDevices.length === 0) {
-          const option = document.createElement("option");
-          option.textContent = "Nenhuma câmera encontrada";
-          cameraSelect.appendChild(option);
-          toggleBtn.disabled = true;
-        } else {
-          currentDeviceId = videoDevices[0].deviceId;
-        }
-      }
-
-      async function startScanner() {
-        if (!codeReader) {
-          codeReader = new ZXing.BrowserMultiFormatReader();
-        }
-        statusEl.textContent = "Iniciando câmera...";
-
-        try {
-          scanning = true;
-          toggleBtn.textContent = "Parar leitura";
-          await codeReader.decodeFromVideoDevice(currentDeviceId, videoElement, (result, err) => {
-            if (result) {
-              barcodeInput.value = result.getText();
-              statusEl.textContent = `Código detectado: ${result.getText()}`;
-              highlightInput(barcodeInput);
-              stopScanner();
-            }
-
-            if (err && !(err instanceof ZXing.NotFoundException)) {
-              console.warn(err);
-              statusEl.textContent = "Erro ao ler o código. Tente novamente.";
-            }
-          });
-        } catch (error) {
-          console.error(error);
-          statusEl.textContent = "Não foi possível acessar a câmera.";
-          scanning = false;
-          toggleBtn.textContent = "Iniciar leitura";
-        }
-      }
-
-      function stopScanner() {
-        if (codeReader) {
-          codeReader.reset();
-        }
-        scanning = false;
-        toggleBtn.textContent = "Iniciar leitura";
-        statusEl.textContent = "Câmera parada";
-      }
-
-      function highlightInput(input) {
-        input.classList.add("highlight");
-        setTimeout(() => input.classList.remove("highlight"), 600);
-      }
-
-      cameraSelect.addEventListener("change", (event) => {
-        currentDeviceId = event.target.value;
-        if (scanning) {
-          stopScanner();
-          startScanner();
-        }
-      });
-
-      toggleBtn.addEventListener("click", () => {
-        if (scanning) {
-          stopScanner();
-        } else {
-          startScanner();
-        }
-      });
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const data = new FormData(form);
-        const payload = Object.fromEntries(data.entries());
-        console.log("Produto pronto para salvar em IndexedDB", payload);
-        alert("Produto pronto para ser salvo (persistência ainda não implementada).");
-        form.reset();
-      });
-
-      window.addEventListener("load", initDevices);
-    </script>
+        <section id="form-section">
+          <h2>Cadastro de produto</h2>
+          <form @submit.prevent="submitForm">
+            <label>
+              Código de barras
+              <input
+                id="barcode"
+                v-model="form.barcode"
+                type="text"
+                readonly
+                placeholder="Escaneie um produto"
+                :class="{ 'highlight-anim': highlightBarcode }"
+              />
+            </label>
+            <label>
+              Nome do produto
+              <input id="name" v-model="form.name" type="text" autocomplete="off" required />
+            </label>
+            <label>
+              Peso / quantidade
+              <input id="weight" v-model="form.weight" type="text" placeholder="Ex: 500 g, 2 L" />
+            </label>
+            <label>
+              Embalagem
+              <input id="package" v-model="form.package" type="text" placeholder="Ex: garrafa PET, pacote" />
+            </label>
+            <label>
+              Foto
+              <input id="photo" type="file" accept="image/*" capture="environment" @change="onPhotoChange" />
+            </label>
+            <button type="submit">Salvar (offline)</button>
+          </form>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
